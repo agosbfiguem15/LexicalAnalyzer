@@ -243,5 +243,15 @@
         "nombre": "%",
         "tipo": "operador",
         "codigo":"103"
+    },
+    {
+        "nombre": "(",
+        "tipo": "simbolo",
+        "codigo":"7"
+    },
+    {
+        "nombre": ")",
+        "tipo": "simbolo",
+        "codigo":"8"
     }
 ]

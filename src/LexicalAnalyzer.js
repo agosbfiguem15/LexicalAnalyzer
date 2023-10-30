@@ -24,9 +24,9 @@ export const lexicalAnalyzer = (input) => {
       const symbolEntry = symbolTable.find(entry => entry.nombre === identifier);
 
       if (symbolEntry) {
-        tokens.push({ type: symbolEntry.tipo, value: identifier, code: symbolEntry.codigo });
+        tokens.push({ type: symbolEntry.tipo, value: identifier });
       } else {
-        console.error(`Error: Identificador no reconocido '${identifier}'`);
+        tokens.push({ type: 'identificador', value: identifier });
       }
     } else if (/[0-9]/.test(char)) {
       let number = char;
@@ -39,7 +39,7 @@ export const lexicalAnalyzer = (input) => {
       const symbolEntry = symbolTable.find(entry => entry.nombre === number);
 
       if (symbolEntry) {
-        tokens.push({ type: symbolEntry.tipo, value: number, code: symbolEntry.codigo });
+        tokens.push({ type: symbolEntry.tipo, value: number });
       } else {
         console.error(`Error: Identificador no reconocido '${number}'`);
       }
@@ -53,11 +53,10 @@ export const lexicalAnalyzer = (input) => {
         currentIndex++;
       }
 
-      console.log(symbole);
       const symbolEntry = symbolTable.find(entry => entry.nombre === symbole);
 
       if (symbolEntry) {
-        tokens.push({ type: symbolEntry.tipo, value: symbole, code: symbolEntry.codigo });
+        tokens.push({ type: symbolEntry.tipo, value: symbole });
       } else {
         console.error(`Error: Símbolo no reconocido '${char}'`);
       }

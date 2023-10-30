@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import LexicalTable from './LexicalTable';
 import { lexicalAnalyzer } from './LexicalAnalyzer';
+import SymbolTable from './SymbolTable';
+import './App.css';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import symbol from './lexemes.json';
 
 function App() {
   const [inputValue, setInputValue] = useState('');
@@ -15,20 +19,51 @@ function App() {
     setTokens(analyzedTokens);
   };
 
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => setModal(!modal);
+
+  const tokens1 = symbol.map(item => ({
+    value: item.nombre,
+    type: item.tipo
+  }));
+
   return (
     <div>
-      <h1>Analizador Léxico</h1>
+      <h1 className='title'>Analizador Léxico</h1>
+      <div className='container'>
+      <div className='area'>
+        <span className='in'>Entrada</span>
       <textarea
         value={inputValue}
         onChange={handleInputChange}
         className="form-control"
         rows="5"
       />
-      <button onClick={analyzeInput} className="btn btn-primary mt-3">
+      </div>
+      <div>
+        <span className='out'>Salida</span>
+      <LexicalTable tokens={tokens} />
+      </div>
+      </div>
+      <div className='buttons'>
+      <button className='button-table' onClick={analyzeInput}>
         Analizar
       </button>
-      <h2>Resultados:</h2>
-      <LexicalTable tokens={tokens} />
+      <Button className='button-table' onClick={toggle}>
+        Tabla de Simbolos
+      </Button>
+      </div>
+      <Modal isOpen={modal} toggle={toggle}>
+      <ModalFooter>
+          <Button className='button-modal' color="secondary" onClick={toggle}>
+            X
+          </Button>
+        </ModalFooter>
+        <ModalBody >
+          <SymbolTable tokens={tokens1} />
+        </ModalBody>
+      </Modal>
     </div>
   );
 }

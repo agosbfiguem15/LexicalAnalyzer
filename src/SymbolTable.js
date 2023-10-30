@@ -2,10 +2,11 @@ import React from 'react';
 import { Table } from 'reactstrap';
 
 function LexicalTable({ tokens }) {
+  console.log(tokens)
   return (
-    <div className='container-table'>
+    <div className='table-symbol'>
       {tokens.length > 0 ? 
-    <Table responsive className='tabe-lexical'>
+    <Table responsive>
       <thead>
         <tr>
           <th>Token</th>
