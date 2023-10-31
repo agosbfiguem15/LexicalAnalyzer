@@ -50,6 +50,9 @@ function App() {
       <button className='button-table' onClick={analyzeInput}>
         Analizar
       </button>
+      <Button className='button-table' onClick={clearInput}>
+        Limpiar
+      </Button>
       <Button className='button-table' onClick={toggle}>
         Tabla de Simbolos
       </Button>
