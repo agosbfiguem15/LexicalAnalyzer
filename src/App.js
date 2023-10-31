@@ -19,6 +19,11 @@ function App() {
     setTokens(analyzedTokens);
   };
 
+  const clearInput = () => {
+    setInputValue('');
+    setTokens([]);
+  };
+
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
